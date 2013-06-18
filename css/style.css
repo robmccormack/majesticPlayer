@@ -105,14 +105,7 @@ body {
 
 /*	Content 
 *________________________________*/
-#infos > *{
-	width: 400px;
-	color: white;
-	background-color: #1b1b1b;
-		filter:alpha(opacity=85);
-		-moz-opacity:0.85;
-		opacity: 0.85;
-}
+
 
 #sound-infos{
 	color: white;

@@ -1,9 +1,9 @@
-/* jQuery tubular plugin
+/* jQuery tubular plugin modded for majesticPlayer.
 |* by Sean McCambridge
 |* modded version by Thomas Brodusch
 |* http://www.seanmccambridge.com/tubular
 |* version: 1.0 (Modded for majesticPlayer)
-|* updated: October 1, 2012
+|* updated: October 1, 2012 (modded : June,2013)
 |* since 2010
 |* licensed under the MIT License
 |* Enjoy.
@@ -72,35 +72,23 @@
             if (options.mute) e.target.mute();
             e.target.seekTo(options.start);
             e.target.playVideo();
-
         }
+
 
         window.onPlayerStateChange = function(state) {
            
-
             if (state.data === 0 && options.repeat == true) { // video ended and repeat option is set true
-                alert('Replay!');
                 player.seekTo(options.start); // restart
-
             }
-            if (state.data === 0 && options.repeat == false) { // video ended and repeat option is set false
-                
-                /*Passe à la video ('li') suivante. */
+            if (state.data === 0 && options.repeat == false) { // video ended and next option is set false
+                //  Go on next video ('li'). 
                 var this_vid_id = options.videoId,
                     actual_video = $('ul.last_sounds li#'+this_vid_id).find('p').attr('id'),
                     next_video = parseInt(actual_video)+1; 
                    
-                  /*RANDOM ?! */
-                    //var this_vid = $('ul.last_sounds').find('li').attr('id',this_vid); // random ?!
-                    //var next_video = this_vid.next();
-               
-                
                 $('.form-search').find('input').val(next_video);
                 $('.form-search').submit();
-             
             }
-
-          
         }
 
         // resize handler updates width, height and offset of player after resize/init
