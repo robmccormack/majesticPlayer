@@ -106,9 +106,13 @@ body {
 /*	Content 
 *________________________________*/
 
+.sub_menu li{
+	max-width: 200px;
+}
 
 #sound-infos{
 	color: white;
 	letter-spacing: -2px;
 }
 
+.form-search{padding-top: 10px;}

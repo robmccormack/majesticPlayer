@@ -12,27 +12,34 @@ var scene = $('#wrapper'),
                                     has_click = false;
                                
                                  //  Play/pause buttons events.
-                                $('#play').click(function () {
+                                $('#play_button').click(function () {
                                     if ( $(this).attr('class') == "tubular-pause btn btn-inverse btn-medium"){
-                                        $(this).attr('class','tubular-play btn btn-inverse btn-medium');
+                                        $(this).attr('class','active tubular-play btn btn-inverse btn-medium');
                                         $(this).find('i').attr('class','icon-pause icon-white');
                                     }else{
                                         $(this).attr('class','tubular-pause btn btn-inverse btn-medium');
                                         $(this).find('i').attr('class','icon-play icon-white');
                                     }
+
                                 });
                                 
                                 //  Playlist button event roll.
                                 $('#playlist_button').click(function() {
                                     if(!has_click){
-                                        $('#playlist').show('slow');
+                                        $('#playlist').fadeIn();
                                         $(this).addClass('active');
                                         has_click = true;
                                     }else{
-                                        $('#playlist').hide('slow');
+                                        $('#playlist').fadeOut();
                                         $(this).removeClass('active');
                                         has_click = false;
                                     }
+                                });
+
+                                //Shuffle button event.
+                                $('#shuffle_button').click(function() {
+                                    $(location).attr('href',"http://localhost:8888");
+
                                 });
 
                                 
@@ -41,9 +48,10 @@ var scene = $('#wrapper'),
                                     $('#playlist-menu ul li a').removeClass('active');
                                     $(this).find('a').addClass('active');
 
-                                    if ($(this).attr('id') == 'last_25') {search_form.find('input').val(1);};
+                                    /*if ($(this).attr('id') == 'last_25') {search_form.find('input').val(1);};
                                     if ($(this).attr('id') == 'first_25') {search_form.find('input').val(680);};
                                     search_form.submit();
+                                    */
                                 });
 
                                 //  Event on thumbnail click.

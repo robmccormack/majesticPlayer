@@ -1,6 +1,12 @@
 <?php
 include_once('includes/retrieve_playlist.php');
-$searchID = $_GET['track'];
+
+$input = $_GET['track'];
+
+if($input == "brandnew"){
+    $searchID = get_total_count()-1;
+}else{$searchID = $_GET['track'];}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -27,7 +33,8 @@ $searchID = $_GET['track'];
                         
             		<div id="menu" class="span4">
             		    <ul>  
-                            <li id="play" class="tubular-play btn btn-inverse btn-medium"><i class="icon-pause icon-white"></i></li>
+                            <li id="shuffle_button" class="btn btn-inverse btn-medium"><i class="icon-refresh icon-white"></i></li>
+                            <li id="play_button" class="tubular-play btn btn-inverse btn-medium"><i class="icon-pause icon-white"></i></li>
             			    <li id="playlist_button" class="btn btn-inverse btn-medium"><i class="icon-list icon-white"></i></li>
             		    </ul>
             		</div>
@@ -36,12 +43,12 @@ $searchID = $_GET['track'];
                 <div id="playlist">
                 	<div id="playlist-menu" class="sub_menu">
                         <form class="form-search" method="get">
-                            <input type="text" class="input-medium search-query" name="track" value="">
+                            <input type="text" class="input-medium search-query" name="track" placeholder="enter a track ID..." value="" data-provide="typeahead">
                             <button type="submit" class="btn"><i class="icon-play"></i></button>
                         </form>
                 		<ul id="">
-                		    <li id="last_25"><a class="active"><i class="icon-heart"></i>Brand new</a></li>
-                		    <li id="first_25"><a>First 25</a></li>
+                		    <li id="last_25"><a <?php if($input == "brandnew"){ echo "class=\"active\"";} ?> href="/?track=brandnew"><i class="icon-heart <?php if($input != "brandnew"){ echo "icon-white";} ?>"></i>Brand new</a></li>
+                		   
                 	    </ul>
                 		<hr size="0,5px">
                     </div><!-- end playlist-menu -->
